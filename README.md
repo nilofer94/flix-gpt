@@ -6,6 +6,19 @@
 - Signup Form
 - Form Validation
 - UseRef hook
+- Authentication using Firebase
+- Deploying in Firebase
+- Create Sign up user account
+- Create Sign In Api
+- Create Redux store with userSlice
+
+# Firebase Setup
+
+- npm i firebase
+- npm i -g firebase-tools
+- firebase login
+- firebase init - select hosting
+- firebse deploy
 
 # Features
 
