@@ -11,6 +11,20 @@
 - Create Sign up user account
 - Create Sign In Api
 - Create Redux store with userSlice
+- Implemented Signout
+- Changed login navigate functionality to header
+- Unsubscribed to onAuthStateChanged
+- Register TMDB API and get access token
+- Get data from TMDB now playing api
+- Custom hook for now playing movies
+- created the movie slice
+- update store with movies data
+- Planning for main container and secondary container
+- fetch data for trailer video
+- Custom hook for trailer video
+- updated store with trailer video
+- embedded youtube video and made it mute and autoplay
+- added tailwind css classes in main container
 
 # Firebase Setup
 

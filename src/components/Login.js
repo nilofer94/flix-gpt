@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import Header from "./Header";
-import { BG_LOGIN_URL } from "../utils/constants";
+import bg_img from "../assets/images/flix_bg.jpg";
 import { checkValidData } from "../utils/validate";
 import {
   createUserWithEmailAndPassword,
@@ -54,17 +54,13 @@ const Login = () => {
             .then(() => {
               const { uid, email, displayName } = auth.currentUser;
               dispatch(addUser({ uid: uid, email: email, name: displayName }));
-              navigate("/browse");
             })
-            .catch((error) => {
-              navigate("/");
-            });
+            .catch((error) => {});
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
           setErrorMessage(errorCode + " " + errorMessage);
-          navigate("/");
         });
     } else {
       //sign in logic
@@ -76,14 +72,13 @@ const Login = () => {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
-          navigate("/browse");
+
           // ...
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
           setErrorMessage(errorCode + " " + errorMessage);
-          navigate("/");
         });
     }
   };
@@ -92,7 +87,7 @@ const Login = () => {
     <div>
       <Header />
       <div className="absolute">
-        <img src={BG_LOGIN_URL} alt="background" />
+        <img src={bg_img} alt="background" />
       </div>
       <form className="absolute p-12 bg-black w-4/12 my-36 mx-auto left-0 right-0 text-white rounded-lg bg-opacity-80">
         <h1 className="font-bold text-3xl pb-4">
