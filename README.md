@@ -31,6 +31,12 @@
 - TMDB Image CDN URL
 - Made the Browsre page amazing with Tailwind CSS
 - usePopularMovies Custom hook
+- useTrendingMovies Custome hook
+- useUpcomig Movies Custom hook
+- GPT search feature
+- GPT search bar
+- Multilingual support
+- Integrate GPT apis
 
 # Firebase Setup
 

@@ -11,3 +11,18 @@ export const API_OPTIONS = {
 };
 
 export const IMG_CDN = "https://image.tmdb.org/t/p/w780/";
+
+export const SUPPORTED_LANGUAGES = [
+  {
+    name: "English",
+    value: "en",
+  },
+  {
+    name: "Tamil",
+    value: "ta",
+  },
+  {
+    name: "Hindi",
+    value: "hi",
+  },
+];
