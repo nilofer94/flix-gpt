@@ -9,7 +9,7 @@ import {
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addUser } from "../utils/userSlice";
 
 const Login = () => {
@@ -21,6 +21,7 @@ const Login = () => {
   const name = useRef(null);
   const email = useRef(null);
   const password = useRef(null);
+  const userData = useSelector((store) => store.user);
 
   const toggleSignInForm = () => {
     setIsSignInForm(!isSignInForm);
@@ -86,56 +87,62 @@ const Login = () => {
   return (
     <div>
       <Header />
-      <div className="absolute">
-        <img
-          src={bg_img}
-          alt="background"
-          className="h-screen w-screen object-cover"
-        />
-      </div>
-      <form className="absolute p-12 bg-black md:w-4/12 my-36 mx-auto left-0 right-0 text-white rounded-lg bg-opacity-80 w-full">
-        <h1 className="font-bold text-3xl pb-4">
-          {isSignInForm ? "Sign In" : "Sign Up"}
-        </h1>
-        {!isSignInForm && (
-          <input
-            type="text"
-            placeholder="Full Name"
-            className="p-4 my-2 w-full rounded-lg bg-transparent border border-solid border-gray-600"
-            ref={name}
-          ></input>
-        )}
-        <input
-          type="text"
-          placeholder="Email Address"
-          className="p-4 my-2 w-full rounded-lg bg-transparent border border-solid border-gray-600"
-          ref={email}
-        ></input>
-        <input
-          type="password"
-          placeholder="Password"
-          ref={password}
-          className="p-4 my-2 w-full rounded-lg bg-transparent border border-solid border-gray-600"
-        ></input>
-        <button
-          className="p-4 my-2 bg-red-700 w-full rounded-lg"
-          onClick={(e) => handleButtonClick(e)}
-        >
-          {isSignInForm ? "Sign In" : "Sign Up"}
-        </button>
-        {errorMessage && <p className="text-red-500 py-4">{errorMessage}</p>}
-        <p className="py-4">
-          <span className="text-gray-500">
-            {isSignInForm ? "New to flixGPT?" : "Already registered?"}
-          </span>
-          <span
-            className="text-white pl-2 cursor-pointer hover:underline"
-            onClick={() => toggleSignInForm()}
-          >
-            {isSignInForm ? "Sign up now." : "Sign in now."}
-          </span>
-        </p>
-      </form>
+      {!userData && (
+        <>
+          <div className="absolute">
+            <img
+              src={bg_img}
+              alt="background"
+              className="h-screen w-screen object-cover"
+            />
+          </div>
+          <form className="absolute p-12 bg-black md:w-4/12 my-36 mx-auto left-0 right-0 text-white rounded-lg bg-opacity-80 w-full">
+            <h1 className="font-bold text-3xl pb-4">
+              {isSignInForm ? "Sign In" : "Sign Up"}
+            </h1>
+            {!isSignInForm && (
+              <input
+                type="text"
+                placeholder="Full Name"
+                className="p-4 my-2 w-full rounded-lg bg-transparent border border-solid border-gray-600"
+                ref={name}
+              ></input>
+            )}
+            <input
+              type="text"
+              placeholder="Email Address"
+              className="p-4 my-2 w-full rounded-lg bg-transparent border border-solid border-gray-600"
+              ref={email}
+            ></input>
+            <input
+              type="password"
+              placeholder="Password"
+              ref={password}
+              className="p-4 my-2 w-full rounded-lg bg-transparent border border-solid border-gray-600"
+            ></input>
+            <button
+              className="p-4 my-2 bg-red-700 w-full rounded-lg"
+              onClick={(e) => handleButtonClick(e)}
+            >
+              {isSignInForm ? "Sign In" : "Sign Up"}
+            </button>
+            {errorMessage && (
+              <p className="text-red-500 py-4">{errorMessage}</p>
+            )}
+            <p className="py-4">
+              <span className="text-gray-500">
+                {isSignInForm ? "New to flixGPT?" : "Already registered?"}
+              </span>
+              <span
+                className="text-white pl-2 cursor-pointer hover:underline"
+                onClick={() => toggleSignInForm()}
+              >
+                {isSignInForm ? "Sign up now." : "Sign in now."}
+              </span>
+            </p>
+          </form>
+        </>
+      )}
     </div>
   );
 };
