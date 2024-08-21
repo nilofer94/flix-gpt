@@ -15,6 +15,7 @@ const Header = () => {
   const dispatch = useDispatch();
   const user = useSelector((store) => store.user);
   const showGptSearch = useSelector((store) => store.gpt.showGptSearch);
+  const language = useSelector((store) => store.config.lang);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -67,7 +68,11 @@ const Header = () => {
             >
               {SUPPORTED_LANGUAGES.map((supLang) => {
                 return (
-                  <option value={supLang.value} key={supLang.value}>
+                  <option
+                    value={supLang.value}
+                    key={supLang.value}
+                    selected={language === supLang.value}
+                  >
                     {supLang.name}
                   </option>
                 );
