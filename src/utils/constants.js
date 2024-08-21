@@ -26,3 +26,6 @@ export const SUPPORTED_LANGUAGES = [
     value: "hi",
   },
 ];
+
+export const OPEN_AI_KEY =
+  "sk-DN-dpP2JVkrqdj14UssMXxWq1PxjlsEPU4X054VBG_T3BlbkFJz6ysv1hDsqOHM0iKGjaBF_uEZ4yHLUZToe1GllsVgA";

@@ -37,6 +37,11 @@
 - GPT search bar
 - Multilingual support
 - Integrate GPT apis
+- GPT search API call
+- Fetch GPT movie suggestions from TMDB
+- GPT Slice
+- memoisation
+- mobile responsiveness
 
 # Firebase Setup
 
