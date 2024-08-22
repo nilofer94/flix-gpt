@@ -8,16 +8,18 @@ import { addUser, removeUser } from "../utils/userSlice";
 import logo from "../assets/images/flixLogo-Photoroom.png";
 import { toggleGptSearchView } from "../utils/gptSlice";
 import { SUPPORTED_LANGUAGES } from "../utils/constants";
-import { changeLanguage } from "../utils/configSlice";
+import { changeLanguage, handleLoading } from "../utils/configSlice";
 
 const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const user = useSelector((store) => store.user);
+
   const showGptSearch = useSelector((store) => store.gpt.showGptSearch);
   const language = useSelector((store) => store.config.lang);
 
   useEffect(() => {
+    dispatch(handleLoading(true));
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         //user sign in
@@ -30,6 +32,7 @@ const Header = () => {
         dispatch(removeUser());
         navigate("/");
       }
+      dispatch(handleLoading(false));
     });
 
     return () => {

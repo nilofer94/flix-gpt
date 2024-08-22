@@ -15,6 +15,7 @@ import { addUser } from "../utils/userSlice";
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
+  const loading = useSelector((store) => store.config?.isLoading);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -87,7 +88,7 @@ const Login = () => {
   return (
     <div>
       <Header />
-      {!userData && (
+      {!userData && !loading && (
         <>
           <div className="absolute">
             <img
